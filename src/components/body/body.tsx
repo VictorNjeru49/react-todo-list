@@ -20,7 +20,7 @@ const Container=()=>{
 
 
         </div>
-        <p>Drag and drop to reorder list</p>
+        
         </>
     )
 }

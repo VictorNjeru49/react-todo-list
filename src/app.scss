@@ -1,0 +1,81 @@
+#root{
+    width: 100%;
+    background:rgb(189, 183, 183);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+     ul{
+        list-style: none;
+        margin: 0 auto;
+        width: 50%;
+        
+        .parent{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        .flots{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: start;
+
+        li{
+            padding: 10px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            margin-top: 20px;
+            
+            .tasktitle{
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                padding-right: 80px;
+                
+            }
+        }
+    }
+        button{
+            background-color: transparent;
+            box-sizing: none;
+            border: none;
+            outline: none;
+        }
+    }
+     }
+    
+     form{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        margin: 0 auto;
+        input{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+     }
+     .toggleapp{
+        button{
+            background-color: transparent;
+            box-sizing: none;
+            border: none;
+            outline: none;
+        }
+        button:active{
+            background-color: rgb(138, 158, 158);
+            color: white;
+            transition: color 0.25s ease-in-out;
+        }
+     }
+}

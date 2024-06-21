@@ -6,7 +6,8 @@ export type Action =
   | { type: 'DELETETASK'; delete: string }
   | { type: 'CLEARCOMPLETED' }
   | { type: 'SETFILTER'; filter: 'all' | 'active' | 'completed' }
-  | { type: 'SETNEWTASK'; set: string };
+  | { type: 'SETNEWTASK'; set: string }
+  | { type: 'SAVETASK'; save: { id: string; title: string } };
 
 export const Initialstate: State = {
   tasks: [],
@@ -19,7 +20,6 @@ export const Reducing = (state: State, action: Action): State => {
       case 'ADDTASK':
         if (action.addtask !== '') {
           const newTask: Task = {
-            id: crypto.randomUUID(),
             title: action.addtask,
             completed: false,
           };
@@ -30,7 +30,7 @@ export const Reducing = (state: State, action: Action): State => {
         return {
           ...state,
           tasks: state.tasks.map((task) =>
-            task.id === action.toggle
+            task.title === action.toggle
               ? { ...task, completed: !task.completed }
               : task
           ),
@@ -38,7 +38,7 @@ export const Reducing = (state: State, action: Action): State => {
       case 'DELETETASK':
         return {
           ...state,
-          tasks: state.tasks.filter((task) => task.id !== action.delete),
+          tasks: state.tasks.filter((task) => task.title !== action.delete),
         };
       case 'CLEARCOMPLETED':
         return {
@@ -49,6 +49,7 @@ export const Reducing = (state: State, action: Action): State => {
         return { ...state, filter: action.filter };
       case 'SETNEWTASK':
         return { ...state, newTask: action.set };
+
       default:
         return state;
     }

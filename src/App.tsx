@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import './app.scss';
 import Mainsection from './components/header/header';
 import check from './images/icon-cross.svg';
@@ -9,6 +9,7 @@ import { Initialstate, Reducing } from './components/reducers/reducers';
 
 function App() {
   const [state, dispatch] = useReducer(Reducing, Initialstate);
+ 
 
   useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
@@ -23,7 +24,7 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(state.tasks));
   }, [state.tasks]);
 
-  const addTask = (e: React.FormEvent): void => {
+  const addTask = (e:any) => {
     e.preventDefault();
     dispatch({ type: 'ADDTASK', addtask: state.newTask });
   };
@@ -44,7 +45,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='container'>
       <Mainsection />
       <form onSubmit={addTask}>
         <input
@@ -53,36 +54,42 @@ function App() {
           onChange={(e) =>
             dispatch({ type: 'SETNEWTASK', set: e.target.value })
           }
-          placeholder="Add a new task"
+          placeholder={"Add a new task"}
         />
         <button type="submit">Add</button>
       </form>
 
       <ul>
-        {filteredTasks().map((task) => (
-          <li key={task.id}>
+        {filteredTasks().map((task,index) => (
+          <li key={index}>
+            <div className='parent'>
+            <div className='flots'>
             <input type="checkbox" checked={task.completed}
-              onChange={() =>dispatch({ type: 'TOGGLETASK', toggle: task.id })}
+              onChange={() =>dispatch({ type: 'TOGGLETASK', toggle: task.title })}
             />
-            <span
+            <span className='tasktitle'
               style={{
                 textDecoration: task.completed ? 'line-through' : 'none',
               }}
             >
               {task.title}
             </span>
+            </div>
+
             <button
               onClick={() =>
-                dispatch({ type: 'DELETETASK', delete: task.id })
+                dispatch({ type: 'DELETETASK', delete: task.title })
               }
             >
               <img src={check} />
             </button>
+            </div>
+
           </li>
         ))}
       </ul>
 
-      <div>
+      <div className='toggleapp'>
       <span>{remainingTasks()} items left</span>
 
 
