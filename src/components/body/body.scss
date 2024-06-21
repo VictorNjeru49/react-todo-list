@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    gap: 30px;
+    border: 2px solid black;
+
+    .sidebar{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    .listing{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        border: 2px solid black;
+        }
+    }
+}
