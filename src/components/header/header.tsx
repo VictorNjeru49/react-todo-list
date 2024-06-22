@@ -8,6 +8,7 @@ import lightbc from './images/bg-desktop-light.jpg'
 
 
 
+
 const Mainsection =()=>{
     const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -21,7 +22,7 @@ const Mainsection =()=>{
         backgroundImage: `url(${isDarkMode ? darkbc : lightbc})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        color: isDarkMode ? '#FFFFFF' : '#000000',
+        color: isDarkMode ? '#FFFFFF' : '#000000'
       }}>
         <div className='timed'>
         <h1>Todo</h1>

@@ -47,6 +47,7 @@ function App() {
   return (
     <div className='container'>
       <Mainsection />
+      
       <form onSubmit={addTask}>
         <input
           type="text"
@@ -58,7 +59,7 @@ function App() {
         />
         <button type="submit">Add</button>
       </form>
-
+      <div className='mailinglist'>
       <ul>
         {filteredTasks().map((task,index) => (
           <li key={index}>
@@ -92,26 +93,26 @@ function App() {
       <div className='toggleapp'>
       <span>{remainingTasks()} items left</span>
 
-
-        <button onClick={() => dispatch({ type: 'SETFILTER', filter: 'all' })}>
+        <div className='tips'>
+        <button className='active' onClick={() => dispatch({ type: 'SETFILTER', filter: 'all' })} >
           All
         </button>
-        <button
-          onClick={() => dispatch({ type: 'SETFILTER', filter: 'active' })}
+        <button className='active' onClick={() => dispatch({ type: 'SETFILTER', filter: 'active' })}
         >
           Active
         </button>
-        <button
-          onClick={() => dispatch({ type: 'SETFILTER', filter: 'completed' })}
+        <button className='active' onClick={() => dispatch({ type: 'SETFILTER', filter: 'completed' })}
         >
           Completed
         </button>
-        <button onClick={() => dispatch({ type: 'CLEARCOMPLETED' })}>
+        </div>
+
+        <button className='active' onClick={() => dispatch({ type: 'CLEARCOMPLETED' })}>
           Clear Completed
         </button>
         
       </div>
-
+</div>
 
       
     </div>
